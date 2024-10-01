@@ -101,7 +101,7 @@ void Controlador::beginDisplay() {
 
 String Controlador::mensajePote() {
   int statusPote = this->controladorPotenciometro->getPotencia();
-  String mensaje = " Potenciometro STATUS\n\n" \
+  String mensaje = "Potenciometro STATUS\n\n" \
   "Potenciometro: " + String(statusPote);
 
   return mensaje;
@@ -111,7 +111,7 @@ String Controlador::mensajeDht22() {
   float statusTem = this->sensorDHT->readTemperature();
   float statusHum = this->sensorDHT->readHumidity();
 
-  String mensaje = "-----DHT22 STATUS----\n\n" \
+  String mensaje = "---- DHT22 STATUS ---\n\n" \
   "Temperatura: " + String(statusTem) + "*C\n" \
   "Humedad: " + String(statusHum) + "%";
 
@@ -136,7 +136,7 @@ String Controlador::mensajeLed() {
     statusVerde = "APAGADO";
   }
 
-  String mensaje = "-----LED STATUS-----\n\n" \
+  String mensaje = "---- LED STATUS ----\n\n" \
   "Led verde: " + statusVerde + "\n" \
   "Led azul: " + statusAzul + "\n";
 

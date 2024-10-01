@@ -2,7 +2,7 @@
 #define INIT_H
 
 #define BOT_TOKEN "7638772028:AAF9afoXo7DHmEcHmQpsgIqNHTHxim0Ravo"
-#define WIFI_USSER "Wokwi-GUEST"// usuario de wifi para la placa
+#define WIFI_USER "Wokwi-GUEST"// usuario de wifi para la placa
 #define WIFI_PASSWORD ""// contraseña de wifi para la placa
 #define LED_VERDE 23
 #define LED_AZUL 2

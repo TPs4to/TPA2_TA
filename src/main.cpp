@@ -7,7 +7,7 @@
 
 
 unsigned long ultimo_scan;
-const long scan_delay = 1000;
+const long scan_delay = 100;
 
 WiFiClientSecure client;
 UniversalTelegramBot bot(BOT_TOKEN, client);
@@ -17,19 +17,19 @@ ControladorLed *controladorLed = new ControladorLed();
 Controlador *controlador = new Controlador(&bot, controladorLed, controladorPotenciometro);
 
 void setup() {
-  // put your setup code here, to run once:
+
   Serial.begin(115200);
-  WiFi.begin(WIFI_USSER, WIFI_PASSWORD);
+  WiFi.begin(WIFI_USER, WIFI_PASSWORD);
   client.setCACert(TELEGRAM_CERTIFICATE_ROOT);
   controlador->beginDisplay();
   
 
-  while (WiFi.status() != WL_CONNECTED)
-  {
+  while (WiFi.status() != WL_CONNECTED) {
     Serial.print(".");
     delay(500);
   }
-  Serial.print("\nWiFi connected. IP address: ");
+
+  Serial.print("\nWiFi conectado. IP: ");
   Serial.println(WiFi.localIP());
 
   ultimo_scan = millis();
@@ -42,7 +42,6 @@ void loop() {
   
   if (millis() > ultimo_scan + scan_delay) {
       int mensajes = bot.getUpdates(bot.last_message_received + 1);
-      Serial.println(mensajes);
       while (mensajes) {
         controlador->manejar_nuevos_mensajes(mensajes);
         mensajes = bot.getUpdates(bot.last_message_received + 1);
